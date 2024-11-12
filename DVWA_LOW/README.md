@@ -78,7 +78,7 @@ Para explotar esta vulnerabilidad, inyectaremos un comando adicional junto con l
 - `8.8.8.8`: Es la dirección IP objetivo inicial que el sistema intentará hacer ping.
 - `| cat /etc/passwd`: Este comando se ejecuta en el sistema y muestra el contenido del archivo `/etc/passwd`, que contiene información sobre los usuarios registrados en el sistema.
 
-![[Pasted image 20241015192953.png]]
+![](/ANEXOS/Pasted%20image%2020241015192953.png)
 
 ### Resultados de la Inyección
 
@@ -170,7 +170,7 @@ La inyección SQL (SQL Injection) es una técnica que permite a un atacante mani
 
 **Explicación**: `information_schema.tables` es una tabla del sistema que contiene los nombres de todas las tablas. Aquí se solicita el campo `table_name`, mientras que el segundo campo se completa con `NULL` para mantener la estructura de columnas.
 
-![[Pasted image 20241112013055.png]]
+![](/ANEXOS/Pasted%20image%2020241112013055.png)
 
 **Listar usuarios y contraseñas**  
 Para extraer directamente las credenciales, podemos usar `UNION SELECT` para combinar nuestra consulta con la tabla `users`:
@@ -181,7 +181,7 @@ Para extraer directamente las credenciales, podemos usar `UNION SELECT` para com
 
 **Explicación**: Esta consulta intentará devolver los valores de las columnas `user` y `password` de la tabla `users`, revelando así la información de los usuarios almacenados en la base de datos.
 
-![[Pasted image 20241112013118.png]]
+![](/ANEXOS/Pasted%20image%2020241112013118.png)
 ## SQL Injection blind
 
 ### SQL Injection Blind (Ciega)
@@ -201,8 +201,8 @@ En una **inyección SQL ciega**, la aplicación no muestra directamente los resu
 
 **Explicación**: En el primer caso (`1=1`), la consulta es verdadera, mientras que en el segundo (`1=2`), la consulta es falsa. Las diferencias en la respuesta de la aplicación indican la existencia de SQL Injection Blind.
 
-![[Pasted image 20241112013154.png]]
-![[Pasted image 20241112013214.png]]
+![](/ANEXOS/Pasted%20image%2020241112013154.png)
+![](/ANEXOS/Pasted%20image%2020241112013214.png)
 
 **Extraer la contraseña del usuario `admin` mediante SQL Injection Blind**  
 Utilizando el método de **inyección ciega basada en booleanos**, es posible extraer los caracteres de una contraseña uno por uno, utilizando la función `substring()`:
@@ -216,7 +216,7 @@ Utilizando el método de **inyección ciega basada en booleanos**, es posible ex
 - `SUBSTRING(password, 1, 1)`: Extrae el carácter de la contraseña en la posición indicada por el primer carácter en este caso`1`.
 - La consulta compara este carácter con un valor estimado (representado por `5`). Al modificar este valor en cada posición y probar cada carácter posible, se puede extraer la contraseña completa de forma ciega.
 
-![[Pasted image 20241112013309.png]]
+![](/ANEXOS/Pasted%20image%2020241112013309.png)
 
 ### Conclusión
 
@@ -224,13 +224,13 @@ El uso de SQL Injection y SQL Injection Blind permite extraer información confi
 
 ## Weak Session IDs
 
-![[Pasted image 20241106155859.png]]
+![](/ANEXOS/Pasted%20image%2020241106155859.png)
 
 
 En este nivel, se genera una nueva cookie de sesión cada vez que pulsamos el botón, y el objetivo es analizar si la cookie sigue un patrón predecible o inseguro.
 
-![[Pasted image 20241106160144.png]]
-![[Pasted image 20241106160304.png]]
+![](/ANEXOS/Pasted%20image%2020241106160144.png)
+![](/ANEXOS/Pasted%20image%2020241106160304.png)
 
 ### Observación del Patrón
 
@@ -270,7 +270,7 @@ La vulnerabilidad aquí se basa en la **predictibilidad** de la cookie, un riesg
 
 ## JavaScript Attacks
 
-![[Pasted image 20241111233630.png]]
+![](/ANEXOS/Pasted%20image%2020241111233630.png)
 
 
 
@@ -314,7 +314,7 @@ Para intentar obtener el valor original del `token`, usamos un descifrador en l�
 
 - **Token descifrado**: `PunatrZr`
 
-![[Pasted image 20241112003051.png]]
+![](/ANEXOS/Pasted%20image%2020241112003051.png)
 
 Sabiendo esto, podemos intentar hashear en md5 la palabra success y el valor que obtengamos intercambiarlo por el token existente, pero esto no funciona.
 
@@ -369,4 +369,4 @@ echo -n "success" | rot13 | md5sum
 
 Al reemplazar el token existente con `38581812b435834ebf84ebcc2c6424d6` y enviar la solicitud, logramos resolver el reto.
 
-![[Pasted image 20241112010718.png]]
+![](/ANEXOS/Pasted%20image%2020241112010718.png)
