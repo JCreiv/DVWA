@@ -6,7 +6,7 @@ docker run --rm -it -p 80:80 vulnerables/web-dvwa
 ## Brute Force
 
 
-![[Pasted image 20241015193100.png]]
+![](/ANEXOS/Pasted%20image%2020241015193100.png)
 
 En este apartado, encontramos un formulario de inicio de sesión simple. Este tipo de formulario es un objetivo común para ataques de **fuerza bruta** y, en algunos casos, puede ser vulnerable a **inyecciones SQL**. A continuación, explicamos cómo ejecutar un ataque de fuerza bruta con `hydra` y, posteriormente, cómo aprovechar una vulnerabilidad SQL para iniciar sesión como administrador.
 
