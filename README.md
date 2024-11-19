@@ -11,7 +11,7 @@ DVWA es una plataforma utilizada comúnmente para estudiar ataques como inyecci�
 
 Para facilitar el análisis y resolución de cada uno de los retos, este repositorio está dividido en los distintos niveles de seguridad que DVWA ofrece:
 
-- **Low**: Nivel básico de seguridad con pocas restricciones.
+- **[Low](https://github.com/JCreiv/DVWA/tree/master/DVWA_LOW)**: Nivel básico de seguridad con pocas restricciones.
 - **Medium**: Nivel medio de seguridad, con medidas de protección adicionales.
 - **Hard**: Nivel avanzado de seguridad, con contramedidas más robustas.
 - **Impossible**: Nivel teóricamente invulnerable en el que las vulnerabilidades están mitigadas al máximo.
